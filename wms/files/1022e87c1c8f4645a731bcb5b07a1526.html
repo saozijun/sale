@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>实时监控</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"  />
+  <meta name="renderer" content="webkit" />
+  <base target="_blank" />
+  <style>
+    body {
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+    }
+    video{
+        width: 100%;
+        height: 100%;
+    }
+  </style>
+</head>
+</head>
+
+<body>
+  <video id="video" autoplay muted controls></video>
+  <script src="./js/flv.min.js"></script>
+  <script>
+    videoElement = document.getElementById('video');
+    let url = "https://8.130.29.177:8444/flv/01"; // flv视频流地址
+    if (flvjs.isSupported()) {
+      flvPlayer = flvjs.createPlayer({
+        type: 'flv',					//媒体类型
+        url: url,					//flv格式媒体URL
+        isLive: true,					//数据源是否为直播流
+        hasAudio: false,				//数据源是否包含有音频
+      });
+      flvPlayer.attachMediaElement(videoElement);	//将播放实例注册到节点
+      flvPlayer.load(); 					//加载数据流
+      flvPlayer.play();					//播放数据流
+    }
+  </script>
+</body>
+
+</html>
