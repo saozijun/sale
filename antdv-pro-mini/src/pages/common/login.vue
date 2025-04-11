@@ -204,7 +204,7 @@ const submit = async () => {
                   </template>
                 </a-input>
               </a-form-item>
-              <a-form-item name="phone" :rules="[{ required: true, message: '请选择角色' }]" v-if="loginStatus === '注册'">
+              <a-form-item name="roleId" :rules="[{ required: true, message: '请选择角色' }]" v-if="loginStatus === '注册'">
                 <a-radio-group v-model:value="loginModel.roleId" name="radioGroup">
                   <a-radio v-for="(item, index) in roleList" :value="item.key" :key="index">{{ item.label }}</a-radio>
                 </a-radio-group>
